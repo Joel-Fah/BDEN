@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:gap/gap.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -7,9 +8,11 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../../core/extensions/datetime_extensions.dart';
+import '../../../../routes/app_routes.dart';
 import '../controllers/profile_controller.dart';
 import '../../../features/auth/controllers/auth_controller.dart';
 import '../../../shared/widgets/user_avatar.dart';
+import '../../donor_card/controllers/donor_card_controller.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({super.key});
@@ -82,7 +85,57 @@ class ProfileScreen extends GetView<ProfileController> {
                   value: user.lastDonationDate?.relative ?? 'Never',
                   onTap: () {}, // Edit
                 ),
-                const Gap(32),
+                const Gap(16),
+
+                // NEW: My Donor Cards and Myth Busters
+                GetBuilder<DonorCardController>(
+                    init: DonorCardController(Get.find(), Get.find(), user.uid),
+                    builder: (cardController) {
+                      return ListTile(
+                        leading: const HugeIcon(
+                            icon: HugeIcons.strokeRoundedCreditCard,
+                            color: AppColors.primary),
+                        title: Text('My Donor Cards',
+                            style: AppTextStyles.titleMedium),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Obx(() => Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 2),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.primaryLight,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Text(
+                                    '${cardController.cards.length}',
+                                    style: AppTextStyles.labelSmall.copyWith(
+                                        color: AppColors.primary,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                )),
+                            const Gap(8),
+                            const Icon(HugeIcons.strokeRoundedArrowRight01,
+                                color: AppColors.textSecondary),
+                          ],
+                        ),
+                        onTap: () => context.push(AppRoutes.donorCards),
+                      );
+                    }),
+                const Divider(),
+                ListTile(
+                  leading: const HugeIcon(
+                      icon: HugeIcons.strokeRoundedHelpCircle,
+                      color: AppColors.primary),
+                  title: Text('Myth Busters', style: AppTextStyles.titleMedium),
+                  subtitle:
+                      Text('Learn the facts', style: AppTextStyles.labelSmall),
+                  trailing: const Icon(HugeIcons.strokeRoundedArrowRight01,
+                      color: AppColors.textSecondary),
+                  onTap: () => context.push(AppRoutes.myths),
+                ),
+                const Divider(),
+                const Gap(16),
 
                 // Pledge History
                 Align(

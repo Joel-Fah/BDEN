@@ -15,6 +15,9 @@ import '../features/pledges/views/my_pledges_screen.dart';
 import '../features/dashboard/views/organizer_dashboard_screen.dart';
 import '../features/notifications/views/notifications_screen.dart';
 import '../features/profile/views/profile_screen.dart';
+import '../features/donor_card/views/donor_cards_screen.dart';
+import '../features/donor_card/views/donor_card_detail_screen.dart';
+import '../features/myths/views/myths_screen.dart';
 import '../shared/layouts/donor_shell.dart';
 import '../shared/layouts/organizer_shell.dart';
 
@@ -119,6 +122,21 @@ final appRouter = GoRouter(
             builder: (_, __) => const NotificationsScreen()),
         GoRoute(
             path: AppRoutes.profile, builder: (_, __) => const ProfileScreen()),
+        
+        // NEW Routes
+        GoRoute(
+          path: '/home/cards', // AppRoutes.donorCards
+          builder: (_, __) => const DonorCardsScreen(),
+        ),
+        GoRoute(
+          path: '/home/cards/:hospitalId', // AppRoutes.donorCardDetail
+          builder: (_, state) =>
+            DonorCardDetailScreen(hospitalId: state.pathParameters['hospitalId']!),
+        ),
+        GoRoute(
+          path: '/home/myths', // AppRoutes.myths
+          builder: (_, __) => const MythsScreen(),
+        ),
       ],
     ),
 

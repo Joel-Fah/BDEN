@@ -1,6 +1,7 @@
 import '../../core/enums/blood_type.dart';
 import '../../core/enums/campaign_status.dart';
 import '../../core/enums/campaign_urgency.dart';
+import 'hospital_perk_model.dart';
 
 class CampaignModel {
   final String id;
@@ -22,6 +23,8 @@ class CampaignModel {
   final DateTime deadline;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final List<HospitalPerkModel> perks;
+  final int minimumVolumeMl;
 
   const CampaignModel({
     required this.id,
@@ -43,6 +46,8 @@ class CampaignModel {
     required this.deadline,
     required this.createdAt,
     required this.updatedAt,
+    this.perks = const [],
+    this.minimumVolumeMl = 350,
   });
 
   double get progressPercent =>
@@ -50,6 +55,7 @@ class CampaignModel {
   bool get isExpired => deadline.isBefore(DateTime.now());
   bool get isFull => unitsPledged >= unitsNeeded;
   bool get isActive => status == CampaignStatus.active && !isExpired;
+  bool get hasPerks => perks.isNotEmpty;
 
   factory CampaignModel.fromJson(Map<String, dynamic> json) => CampaignModel(
         id: json['id'],
@@ -73,6 +79,10 @@ class CampaignModel {
         deadline: DateTime.parse(json['deadline']),
         createdAt: DateTime.parse(json['createdAt']),
         updatedAt: DateTime.parse(json['updatedAt']),
+        perks: (json['perks'] as List? ?? [])
+            .map((e) => HospitalPerkModel.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        minimumVolumeMl: json['minimumVolumeMl'] ?? 350,
       );
 
   Map<String, dynamic> toJson() => {
@@ -95,6 +105,8 @@ class CampaignModel {
         'deadline': deadline.toIso8601String(),
         'createdAt': createdAt.toIso8601String(),
         'updatedAt': updatedAt.toIso8601String(),
+        'perks': perks.map((e) => e.toJson()).toList(),
+        'minimumVolumeMl': minimumVolumeMl,
       };
 
   CampaignModel copyWith({
@@ -109,6 +121,8 @@ class CampaignModel {
     CampaignUrgency? urgency,
     DateTime? deadline,
     DateTime? updatedAt,
+    List<HospitalPerkModel>? perks,
+    int? minimumVolumeMl,
   }) =>
       CampaignModel(
         id: id,
@@ -130,5 +144,7 @@ class CampaignModel {
         urgency: urgency ?? this.urgency,
         deadline: deadline ?? this.deadline,
         updatedAt: updatedAt ?? DateTime.now(),
+        perks: perks ?? this.perks,
+        minimumVolumeMl: minimumVolumeMl ?? this.minimumVolumeMl,
       );
 }

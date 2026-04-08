@@ -18,6 +18,7 @@ import '../widgets/blood_type_chip.dart';
 import '../widgets/urgency_badge.dart';
 import '../../../../data/models/pledge_model.dart';
 import 'package:uuid/uuid.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class CampaignDetailScreen extends GetView<CampaignDetailController> {
   final String campaignId;
@@ -141,6 +142,73 @@ class CampaignDetailScreen extends GetView<CampaignDetailController> {
                         const Gap(8),
                         Text(campaign.description,
                             style: AppTextStyles.bodyLarge),
+                        const Gap(24),
+                        Text('What you get in return 🎁',
+                            style: AppTextStyles.titleMedium),
+                        const Gap(8),
+                        if (campaign.hasPerks)
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: campaign.perks.length,
+                            itemBuilder: (context, index) {
+                              final perk = campaign.perks[index];
+                              IconData getIcon(String iconName) {
+                                switch (iconName) {
+                                  case 'stethoscope':
+                                    return HugeIcons.strokeRoundedStethoscope;
+                                  case 'medicine_02':
+                                    return HugeIcons
+                                        .strokeRoundedMedicineBottle01;
+                                  case 'star':
+                                    return HugeIcons.strokeRoundedStar;
+                                  case 'doctor_01':
+                                    return HugeIcons.strokeRoundedDoctor01;
+                                  case 'test_tube':
+                                    return HugeIcons.strokeRoundedTestTube01;
+                                  default:
+                                    return HugeIcons.strokeRoundedGift;
+                                }
+                              }
+
+                              return ListTile(
+                                leading: HugeIcon(
+                                  icon: getIcon(perk.type.icon),
+                                  color: AppColors.primary,
+                                ),
+                                title: Text(perk.type.label,
+                                    style: AppTextStyles.labelLarge),
+                                subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(perk.description,
+                                        style: AppTextStyles.bodyMedium),
+                                    if (perk.conditionNote != null)
+                                      Text(
+                                        perk.conditionNote!,
+                                        style:
+                                            AppTextStyles.labelSmall.copyWith(
+                                          color: AppColors.textHint,
+                                          fontStyle: FontStyle.italic,
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                                contentPadding: EdgeInsets.zero,
+                              )
+                                  .animate(delay: index.ms * 80)
+                                  .fadeIn()
+                                  .slideX(begin: 0.1);
+                            },
+                          )
+                        else
+                          Text(
+                            "This campaign hasn't listed any perks yet.",
+                            style: AppTextStyles.bodyMedium.copyWith(
+                              fontStyle: FontStyle.italic,
+                              color: AppColors.textHint,
+                            ),
+                          ),
                         const Gap(24),
                         Row(
                           children: [

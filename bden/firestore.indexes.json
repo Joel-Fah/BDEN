@@ -56,6 +56,46 @@
         { "fieldPath": "userId", "order": "ASCENDING" },
         { "fieldPath": "isRead", "order": "ASCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "donation_records",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "donorId", "order": "ASCENDING" },
+        { "fieldPath": "donatedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "donation_records",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "hospitalId", "order": "ASCENDING" },
+        { "fieldPath": "donatedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "donor_cards",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "donorId", "order": "ASCENDING" },
+        { "fieldPath": "qualifyingDonationCount", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "donor_cards",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "donorId", "order": "ASCENDING" },
+        { "fieldPath": "hospitalId", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "myths",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "category", "order": "ASCENDING" },
+        { "fieldPath": "order", "order": "ASCENDING" }
+      ]
     }
   ]
 }

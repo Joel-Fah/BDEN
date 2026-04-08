@@ -280,7 +280,7 @@ class _CampaignRow extends StatelessWidget {
                                           Icons.check_circle_outline,
                                           color: AppColors.success),
                                       onPressed: () =>
-                                          controller.confirmPledge(p),
+                                          controller.confirmPledge(p, campaign),
                                     )
                                   : const Icon(Icons.check_circle,
                                       color: AppColors.success, size: 16),
