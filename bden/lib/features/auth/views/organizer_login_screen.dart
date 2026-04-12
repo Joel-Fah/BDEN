@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gap/gap.dart';
@@ -108,10 +108,10 @@ class OrganizerLoginScreen extends GetView<AuthController> {
                           padding: const EdgeInsets.all(12),
                           margin: const EdgeInsets.only(bottom: 24),
                           decoration: BoxDecoration(
-                            color: AppColors.error.withOpacity(0.1),
+                            color: AppColors.error.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                                color: AppColors.error.withOpacity(0.3)),
+                                color: AppColors.error.withValues(alpha: 0.3)),
                           ),
                           child: Row(
                             children: [
@@ -150,3 +150,4 @@ class OrganizerLoginScreen extends GetView<AuthController> {
     );
   }
 }
+

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -220,7 +220,7 @@ class _CampaignFeedScreenState extends State<CampaignFeedScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Did you know? 🤔',
+                                Text('Did you know? ðŸ¤”',
                                     style: AppTextStyles.titleMedium),
                                 TextButton(
                                   onPressed: () =>
@@ -251,7 +251,7 @@ class _CampaignFeedScreenState extends State<CampaignFeedScreen> {
                                       color: AppColors.primaryLight,
                                       border: Border.all(
                                           color: AppColors.primary
-                                              .withOpacity(0.3)),
+                                              .withValues(alpha: 0.3)),
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: Column(
@@ -281,7 +281,7 @@ class _CampaignFeedScreenState extends State<CampaignFeedScreen> {
                                                         FontWeight.bold),
                                               ),
                                             ),
-                                            Text('Tap to bust 🔥',
+                                            Text('Tap to bust ðŸ”¥',
                                                 style: AppTextStyles.labelSmall
                                                     .copyWith(
                                                         color:
@@ -397,7 +397,7 @@ class _CampaignFeedScreenState extends State<CampaignFeedScreen> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                  color: AppColors.border.withOpacity(0.5)),
+                                  color: AppColors.border.withValues(alpha: 0.5)),
                               boxShadow: const [
                                 BoxShadow(
                                     color: Color(0x0F000000),
@@ -413,7 +413,7 @@ class _CampaignFeedScreenState extends State<CampaignFeedScreen> {
                                   width: 60,
                                   decoration: BoxDecoration(
                                     color:
-                                        AppColors.primaryLight.withOpacity(0.3),
+                                        AppColors.primaryLight.withValues(alpha: 0.3),
                                     shape: BoxShape.circle,
                                   ),
                                   child: const HugeIcon(
@@ -475,7 +475,7 @@ class _CampaignFeedScreenState extends State<CampaignFeedScreen> {
                               ),
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                  color: AppColors.border.withOpacity(0.5)),
+                                  color: AppColors.border.withValues(alpha: 0.5)),
                               boxShadow: const [
                                 BoxShadow(
                                     color: Color(0x0F000000),
@@ -585,3 +585,4 @@ class _SliverFilterDelegate extends SliverPersistentHeaderDelegate {
     return true; // We want it to rebuild when filters change though Obx inside handles it
   }
 }
+

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gap/gap.dart';
@@ -72,8 +72,8 @@ class DonorCardsScreen extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       color: isEligible
-          ? AppColors.success.withOpacity(0.1)
-          : AppColors.warning.withOpacity(0.1),
+          ? AppColors.success.withValues(alpha: 0.1)
+          : AppColors.warning.withValues(alpha: 0.1),
       child: Row(
         children: [
           HugeIcon(
@@ -87,7 +87,7 @@ class DonorCardsScreen extends StatelessWidget {
           Expanded(
             child: Text(
               isEligible
-                  ? "You're eligible to donate! 🩸"
+                  ? "You're eligible to donate! ðŸ©¸"
                   : "Next donation available in ${c.daysUntilNextDonation} days",
               style: AppTextStyles.labelLarge.copyWith(
                 color: isEligible ? AppColors.success : AppColors.warning,
@@ -258,3 +258,4 @@ class DonorCardWidget extends StatelessWidget {
     return cardWidget;
   }
 }
+

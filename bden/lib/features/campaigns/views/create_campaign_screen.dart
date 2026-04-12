@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gap/gap.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -110,7 +110,7 @@ class CreateCampaignScreen extends GetView<CreateCampaignController> {
                                     const EdgeInsets.symmetric(vertical: 12),
                                 decoration: BoxDecoration(
                                   color: isSelected
-                                      ? u.color.withOpacity(0.1)
+                                      ? u.color.withValues(alpha: 0.1)
                                       : AppColors.surface,
                                   border: Border.all(
                                     color:
@@ -362,3 +362,4 @@ class CreateCampaignScreen extends GetView<CreateCampaignController> {
     );
   }
 }
+

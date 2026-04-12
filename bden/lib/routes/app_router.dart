@@ -111,8 +111,15 @@ final appRouter = GoRouter(
             builder: (_, __) => const CampaignFeedScreen()),
         GoRoute(
           path: '/home/feed/:id', // Matching AppRoutes.campaignDetail pattern
-          builder: (_, state) =>
-              CampaignDetailScreen(campaignId: state.pathParameters['id']!),
+          pageBuilder: (context, state) => CustomTransitionPage(
+            key: state.pageKey,
+            child: CampaignDetailScreen(campaignId: state.pathParameters['id']!),
+            transitionDuration: const Duration(milliseconds: 600),
+            reverseTransitionDuration: const Duration(milliseconds: 600),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
+          ),
         ),
         GoRoute(
             path: AppRoutes.pledges,

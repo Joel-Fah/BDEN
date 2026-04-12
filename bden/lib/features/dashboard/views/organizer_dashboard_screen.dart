@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -219,8 +219,8 @@ class _CampaignRow extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
                 color: campaign.isActive
-                    ? AppColors.success.withOpacity(0.1)
-                    : Colors.grey.withOpacity(0.1),
+                    ? AppColors.success.withValues(alpha: 0.1)
+                    : Colors.grey.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Text(
@@ -296,3 +296,4 @@ class _CampaignRow extends StatelessWidget {
     );
   }
 }
+

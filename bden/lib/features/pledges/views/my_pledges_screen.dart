@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -51,7 +51,7 @@ class MyPledgesScreen extends GetView<PledgeController> {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.04),
+                    color: Colors.black.withValues(alpha: 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -64,8 +64,8 @@ class MyPledgesScreen extends GetView<PledgeController> {
                     width: 56,
                     decoration: BoxDecoration(
                       color: isConfirmed
-                          ? AppColors.success.withOpacity(0.1)
-                          : AppColors.primaryLight.withOpacity(0.3),
+                          ? AppColors.success.withValues(alpha: 0.1)
+                          : AppColors.primaryLight.withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Icon(
@@ -96,8 +96,8 @@ class MyPledgesScreen extends GetView<PledgeController> {
                                   horizontal: 8, vertical: 4),
                               decoration: BoxDecoration(
                                 color: isConfirmed
-                                    ? AppColors.success.withOpacity(0.1)
-                                    : AppColors.warning.withOpacity(0.1),
+                                    ? AppColors.success.withValues(alpha: 0.1)
+                                    : AppColors.warning.withValues(alpha: 0.1),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
@@ -166,3 +166,4 @@ class MyPledgesScreen extends GetView<PledgeController> {
     );
   }
 }
+

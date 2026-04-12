@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:gap/gap.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -24,7 +24,7 @@ class CampaignCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.border.withOpacity(0.5)),
+        border: Border.all(color: AppColors.border.withValues(alpha: 0.5)),
         boxShadow: const [
           BoxShadow(
             color: Color(0x0F000000),
@@ -57,11 +57,11 @@ class CampaignCard extends StatelessWidget {
                               placeholder: (_, __) =>
                                   Container(color: Colors.grey.shade200),
                               errorWidget: (_, __, ___) => Container(
-                                color: AppColors.primaryLight.withOpacity(0.3),
+                                color: AppColors.primaryLight.withValues(alpha: 0.3),
                                 child: Center(
                                   child: HugeIcon(
                                     icon: HugeIcons.strokeRoundedDroplet,
-                                    color: AppColors.primary.withOpacity(0.5),
+                                    color: AppColors.primary.withValues(alpha: 0.5),
                                     size: 48,
                                   ),
                                 ),
@@ -112,7 +112,7 @@ class CampaignCard extends StatelessWidget {
                         const Gap(4),
                         Expanded(
                           child: Text(
-                            '${campaign.organizerName} • ${campaign.city}',
+                            '${campaign.organizerName} â€¢ ${campaign.city}',
                             style: AppTextStyles.bodyMedium,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -148,3 +148,4 @@ class CampaignCard extends StatelessWidget {
     );
   }
 }
+

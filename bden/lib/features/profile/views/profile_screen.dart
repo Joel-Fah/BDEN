@@ -180,7 +180,7 @@ class ProfileScreen extends GetView<ProfileController> {
                     icon: HugeIcons.strokeRoundedDroplet,
                     label: 'Blood Type',
                     child: DropdownButtonFormField<String>(
-                      value: controller.selectedBloodType.value?.label,
+                      initialValue: controller.selectedBloodType.value?.label,
                       decoration: const InputDecoration(
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.zero),

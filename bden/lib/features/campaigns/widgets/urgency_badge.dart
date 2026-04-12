@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../../../core/enums/campaign_urgency.dart';
 import '../../../../core/constants/app_text_styles.dart';
 
@@ -12,7 +12,7 @@ class UrgencyBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: urgency.color.withOpacity(0.1),
+        color: urgency.color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: urgency.color),
       ),
@@ -24,3 +24,4 @@ class UrgencyBadge extends StatelessWidget {
     );
   }
 }
+

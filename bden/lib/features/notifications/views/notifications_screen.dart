@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -48,7 +48,7 @@ class NotificationsScreen extends GetView<NotificationController> {
             return Container(
               color: n.isRead
                   ? Colors.transparent
-                  : AppColors.primaryLight.withOpacity(0.3),
+                  : AppColors.primaryLight.withValues(alpha: 0.3),
               child: ListTile(
                 leading: _buildIcon(n.type),
                 title: Text(n.title, style: AppTextStyles.titleMedium),
@@ -88,8 +88,9 @@ class NotificationsScreen extends GetView<NotificationController> {
         break;
     }
     return CircleAvatar(
-      backgroundColor: color.withOpacity(0.1),
+      backgroundColor: color.withValues(alpha: 0.1),
       child: Icon(icon, color: color),
     );
   }
 }
+

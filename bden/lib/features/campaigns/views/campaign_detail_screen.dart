@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -146,7 +146,7 @@ class CampaignDetailScreen extends GetView<CampaignDetailController> {
                         Text(campaign.description,
                             style: AppTextStyles.bodyLarge),
                         const Gap(24),
-                        Text('What you get in return 🎁',
+                        Text('What you get in return ðŸŽ',
                             style: AppTextStyles.titleMedium),
                         const Gap(8),
                         if (campaign.hasPerks)
@@ -239,7 +239,7 @@ class CampaignDetailScreen extends GetView<CampaignDetailController> {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
+                        color: Colors.black.withValues(alpha: 0.05),
                         blurRadius: 10,
                         offset: const Offset(0, -5))
                   ],
@@ -256,7 +256,7 @@ class CampaignDetailScreen extends GetView<CampaignDetailController> {
                               onPressed: () {},
                               isOutlined: true,
                               backgroundColor:
-                                  AppColors.success.withOpacity(0.1),
+                                  AppColors.success.withValues(alpha: 0.1),
                               textColor: AppColors.success,
                             ),
                             const Gap(8),
@@ -303,3 +303,4 @@ class CampaignDetailScreen extends GetView<CampaignDetailController> {
     );
   }
 }
+
