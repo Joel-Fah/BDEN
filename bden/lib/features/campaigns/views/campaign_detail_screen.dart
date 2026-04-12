@@ -54,18 +54,21 @@ class CampaignDetailScreen extends GetView<CampaignDetailController> {
                   expandedHeight: 220,
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
-                    background: campaign.imageUrl != null
-                        ? CachedNetworkImage(
-                            imageUrl: campaign.imageUrl!, fit: BoxFit.cover)
-                        : Container(
-                            color: AppColors.primaryLight,
-                            child: const Center(
-                              child: HugeIcon(
-                                  icon: HugeIcons.strokeRoundedDroplet,
-                                  size: 60,
-                                  color: AppColors.primary),
+                    background: Hero(
+                      tag: 'campaign-image-${campaign.id}',
+                      child: campaign.imageUrl != null
+                          ? CachedNetworkImage(
+                              imageUrl: campaign.imageUrl!, fit: BoxFit.cover)
+                          : Container(
+                              color: AppColors.primaryLight,
+                              child: const Center(
+                                child: HugeIcon(
+                                    icon: HugeIcons.strokeRoundedDroplet,
+                                    size: 60,
+                                    color: AppColors.primary),
+                              ),
                             ),
-                          ),
+                    ),
                   ),
                   leading: IconButton(
                     icon:

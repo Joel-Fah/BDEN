@@ -9,7 +9,7 @@ import '../../../core/constants/app_text_styles.dart';
 import '../../../core/enums/myth_category.dart';
 import '../controllers/myth_controller.dart';
 import '../../../data/models/myth_model.dart';
-import '../../../data/services/myth_service.dart';
+import '../../../data/repositories/myth_repository.dart';
 
 class MythsScreen extends StatefulWidget {
   const MythsScreen({super.key});
@@ -25,7 +25,7 @@ class _MythsScreenState extends State<MythsScreen> {
   void initState() {
     super.initState();
     if (!Get.isRegistered<MythController>()) {
-      Get.put(MythController(Get.find<MythService>()));
+      Get.put(MythController(Get.find<MythRepository>()));
     }
     c = Get.find<MythController>();
   }

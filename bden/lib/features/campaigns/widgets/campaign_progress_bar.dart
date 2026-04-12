@@ -23,14 +23,12 @@ class CampaignProgressBar extends StatelessWidget {
                   fontWeight: FontWeight.bold, color: AppColors.primary)),
           const SizedBox(height: 4),
         ],
-        ClipRRect(
+        LinearProgressIndicator(
+          value: progress,
+          backgroundColor: AppColors.border,
+          color: AppColors.primary,
+          minHeight: height,
           borderRadius: BorderRadius.circular(height / 2),
-          child: LinearProgressIndicator(
-            value: progress,
-            backgroundColor: AppColors.border,
-            color: AppColors.primary,
-            minHeight: height,
-          ),
         ),
       ],
     );

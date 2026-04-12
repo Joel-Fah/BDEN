@@ -15,6 +15,11 @@ class AppTextStyles {
         fontWeight: FontWeight.w600,
         color: AppColors.textPrimary,
       );
+  static TextStyle get headlineSmall => GoogleFonts.plusJakartaSans(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: AppColors.textPrimary,
+      );
   static TextStyle get titleLarge => GoogleFonts.plusJakartaSans(
         fontSize: 18,
         fontWeight: FontWeight.w600,
@@ -32,6 +37,11 @@ class AppTextStyles {
       );
   static TextStyle get bodyMedium => GoogleFonts.plusJakartaSans(
         fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: AppColors.textSecondary,
+      );
+  static TextStyle get bodySmall => GoogleFonts.plusJakartaSans(
+        fontSize: 12,
         fontWeight: FontWeight.w400,
         color: AppColors.textSecondary,
       );

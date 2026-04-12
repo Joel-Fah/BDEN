@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:gap/gap.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 // For timeago
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
@@ -24,7 +23,7 @@ class CampaignCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(24),
         border: Border.all(color: AppColors.border.withOpacity(0.5)),
         boxShadow: const [
           BoxShadow(
@@ -45,41 +44,47 @@ class CampaignCard extends StatelessWidget {
               // Image + Badge
               Stack(
                 children: [
-                  Container(
-                    height: 220,
-                    width: double.infinity,
-                    color: AppColors.background,
-                    child: campaign.imageUrl != null
-                        ? CachedNetworkImage(
-                            imageUrl: campaign.imageUrl!,
-                            fit: BoxFit.cover,
-                            placeholder: (_, __) =>
-                                Container(color: Colors.grey.shade200),
-                            errorWidget: (_, __, ___) => Container(
-                              color: AppColors.primaryLight.withOpacity(0.3),
-                              child: Center(
-                                child: HugeIcon(
-                                  icon: HugeIcons.strokeRoundedDroplet,
-                                  color: AppColors.primary.withOpacity(0.5),
-                                  size: 48,
+                  Hero(
+                    tag: 'campaign-image-${campaign.id}',
+                    child: Container(
+                      height: 220,
+                      width: double.infinity,
+                      color: AppColors.background,
+                      child: campaign.imageUrl != null
+                          ? CachedNetworkImage(
+                              imageUrl: campaign.imageUrl!,
+                              fit: BoxFit.cover,
+                              placeholder: (_, __) =>
+                                  Container(color: Colors.grey.shade200),
+                              errorWidget: (_, __, ___) => Container(
+                                color: AppColors.primaryLight.withOpacity(0.3),
+                                child: Center(
+                                  child: HugeIcon(
+                                    icon: HugeIcons.strokeRoundedDroplet,
+                                    color: AppColors.primary.withOpacity(0.5),
+                                    size: 48,
+                                  ),
                                 ),
                               ),
-                            ),
-                          )
-                        : Container(
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [AppColors.primaryLight, Colors.white],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
+                            )
+                          : Container(
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    AppColors.primaryLight,
+                                    Colors.white
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
                               ),
+                              child: const Center(
+                                  child: HugeIcon(
+                                      icon: HugeIcons.strokeRoundedDroplet,
+                                      color: AppColors.primary,
+                                      size: 48)),
                             ),
-                            child: const Center(
-                                child: HugeIcon(
-                                    icon: HugeIcons.strokeRoundedDroplet,
-                                    color: AppColors.primary,
-                                    size: 48)),
-                          ),
+                    ),
                   ),
                   Positioned(
                     top: 12,
@@ -140,6 +145,6 @@ class CampaignCard extends StatelessWidget {
           ),
         ),
       ),
-    ).animate().fadeIn().slideY(begin: 0.05);
+    );
   }
 }
