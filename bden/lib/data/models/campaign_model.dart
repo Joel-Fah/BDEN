@@ -8,8 +8,6 @@ class CampaignModel {
   final String title;
   final String description;
   final String organizerId;
-  final String organizerName;
-  final String? organizerLogoUrl;
   final String? imageUrl;
   final List<BloodType> bloodTypesNeeded;
   final int unitsNeeded;
@@ -31,8 +29,6 @@ class CampaignModel {
     required this.title,
     required this.description,
     required this.organizerId,
-    required this.organizerName,
-    this.organizerLogoUrl,
     this.imageUrl,
     required this.bloodTypesNeeded,
     required this.unitsNeeded,
@@ -62,8 +58,6 @@ class CampaignModel {
         title: json['title'],
         description: json['description'],
         organizerId: json['organizerId'],
-        organizerName: json['organizerName'],
-        organizerLogoUrl: json['organizerLogoUrl'],
         imageUrl: json['imageUrl'],
         bloodTypesNeeded: (json['bloodTypesNeeded'] as List)
             .map((e) => BloodType.fromString(e))
@@ -90,8 +84,6 @@ class CampaignModel {
         'title': title,
         'description': description,
         'organizerId': organizerId,
-        'organizerName': organizerName,
-        'organizerLogoUrl': organizerLogoUrl,
         'imageUrl': imageUrl,
         'bloodTypesNeeded': bloodTypesNeeded.map((e) => e.label).toList(),
         'unitsNeeded': unitsNeeded,
@@ -127,8 +119,6 @@ class CampaignModel {
       CampaignModel(
         id: id,
         organizerId: organizerId,
-        organizerName: organizerName,
-        organizerLogoUrl: organizerLogoUrl,
         address: address,
         city: city,
         region: region,
